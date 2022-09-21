@@ -52,6 +52,9 @@ dev_dependencies:
   event_bus: ^2.0.0
   file_picker: ^5.0.1
   desktop_window: ^0.4.0
+  getwidget: ^3.0.1
+  get: 4.6.5
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
