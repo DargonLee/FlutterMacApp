@@ -61,6 +61,55 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _bottomButtonPress() {}
+  void _inputChipDeletePress() {}
+
+  Widget _buildTitle() {
+    return Text(
+      '一分一秒，皆是你专注的时光',
+      textAlign: TextAlign.center,
+      style: TextStyle(color: Colors.blue, fontSize: 24, fontWeight: FontWeight.bold),
+    );
+  }
+
+  Widget _buildProgressIndicator() {
+    return SizedBox(
+      height: 200,
+      width: 200,
+      child: CircularProgressIndicator(
+        strokeWidth: 10.0,
+        backgroundColor: Colors.grey[300],
+        valueColor: AlwaysStoppedAnimation(Colors.blue),
+        value: .7,
+      ),
+    );
+  }
+
+  Widget _buildTimer() {
+    return Text('24:42', style: TextStyle(color: Colors.blue, fontSize: 80, fontWeight: FontWeight.bold));
+  }
+
+  Widget _buildChip() {
+    return InputChip(
+        onDeleted: _inputChipDeletePress,
+        deleteIcon: Icon(Icons.edit),
+        padding: EdgeInsets.all(5),
+        label: Text('学习'),
+        avatar: CircleAvatar(
+          child: Text(''),
+        ));
+  }
+
+  Widget _buildBootomButton() {
+    return SizedBox(
+      width: 80,
+      child: TextButton(
+          style: TextButton.styleFrom(backgroundColor: Colors.white, side: BorderSide(color: Colors.blue, width: 1), shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5)))),
+          onPressed: _bottomButtonPress,
+          child: Text('放弃')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -70,17 +119,17 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Container(child: Text('Hello')),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [_buildTitle(), _buildProgressIndicator(), _buildTimer(), _buildChip(), _buildBootomButton()],
+          ),
+        ) // This trailing comma makes auto-formatting nicer for build methods.
+        );
   }
 }
